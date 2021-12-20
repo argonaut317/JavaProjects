@@ -98,6 +98,38 @@ class BinaryTree{
 
     }
 
+
+    int MaximumElementNonRecursion(Node root){
+
+        int max = Integer.MIN_VALUE;
+        Queue<Node> Q = new LinkedList<>();
+        Q.add(root);
+        Node temp = null;
+
+        while(!Q.isEmpty()){
+
+            temp = Q.peek();
+            Q.remove();
+
+            if(max<temp.data){
+                max = temp.data;
+            }
+
+            if(temp.left!=null){
+                Q.add(temp.left);
+            }
+            if(temp.right!=null){
+                Q.add(temp.right);
+            }
+
+         }
+
+
+         return max;
+
+
+    }
+
 }
 
 
@@ -112,6 +144,8 @@ ArrayList<Integer> Arr = new ArrayList<Integer>(Arrays.asList(7,3,1,6,9,2,42,11,
            Tree.insertion(Arr.get(i));
        }
       System.out.print( Tree.MaximumElement(Tree.root));
+      System.out.println();
+      System.out.print(Tree.MaximumElementNonRecursion(Tree.root));
 
        
 
